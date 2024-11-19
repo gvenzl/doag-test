@@ -5,12 +5,12 @@ on: [push, pull_request]
 jobs:
 
   test-data-load:
-  
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-    - name: ⭕ Setup test database
+      - name: ⭕ Setup test database
         uses: gvenzl/setup-oracle-free@v1
         with:
           tag: slim
@@ -20,8 +20,7 @@ jobs:
      - name: 💻 Setup SQLcl
         uses: gvenzl/setup-oracle-sqlcl@v1
     
-    - name: Install data set
-      run: |
+     - name: Install data set
+       run: |
           wget https://raw.githubusercontent.com/gvenzl/sample-data/refs/heads/main/countries-cities-currencies/install.sql
           sql gerald/LetsHaveFun1@localhost/freepdb1 @install.sql
-
